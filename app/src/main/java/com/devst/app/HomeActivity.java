@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +78,8 @@ public class HomeActivity extends AppCompatActivity {
         Button btnEnviarCorreo = findViewById(R.id.btnEnviarCorreo);
         Button btnCompartir = findViewById(R.id.btnCompartir);
         btnLinterna = findViewById(R.id.btnLinterna);
+        Button btnGoogleMaps = findViewById(R.id.btnGoogleMaps);
+        Button btnLlamar = findViewById(R.id.btnLlamar);
         Button btnCamara = findViewById(R.id.btnCamara);
 
         // Recibir dato del Login
@@ -92,10 +95,12 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         // Evento: Intent implícito → abrir web
-        btnAbrirWeb.setOnClickListener(v -> {
-            Uri uri = Uri.parse("https://www.santotomas.cl");
-            Intent viewWeb = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(viewWeb);
+        btnAbrirWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.santotomas.cl"));
+                startActivity(intent);
+            }
         });
 
         // Evento: Intent implícito → enviar correo
@@ -114,6 +119,15 @@ public class HomeActivity extends AppCompatActivity {
             share.setType("text/plain");
             share.putExtra(Intent.EXTRA_TEXT, "Hola desde mi app Android 😎");
             startActivity(Intent.createChooser(share, "Compartir usando:"));
+        });
+
+        btnGoogleMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Vergara 165, Santiago, Chile"));
+                startActivity(intent);
+
+            }
         });
 
 
