@@ -1,6 +1,8 @@
 package com.devst.app;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,14 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_perfil);
+
+        Button btnVolver = findViewById(R.id.btnVolver);
+
+        btnVolver.setOnClickListener(v ->{
+            Intent intent = new Intent(PerfilActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
     }
 }

@@ -88,11 +88,11 @@ public class HomeActivity extends AppCompatActivity {
         tvBienvenida.setText("Bienvenido: " + emailUsuario);
 
         // Evento: Intent explícito → ProfileActivity (esperando resultado)
-        btnIrPerfil.setOnClickListener(v -> {
-            Intent i = new Intent(HomeActivity.this, PerfilActivity.class);
-            i.putExtra("email_usuario", emailUsuario);
-            editarPerfilLauncher.launch(i);
-        });
+            btnIrPerfil.setOnClickListener(v -> {
+                Intent i = new Intent(HomeActivity.this,
+                PerfilActivity.class); i.putExtra("email_usuario", emailUsuario);
+                editarPerfilLauncher.launch(i); });
+
 
         // Evento: Intent implícito → abrir web
         btnAbrirWeb.setOnClickListener(new View.OnClickListener() {
@@ -108,9 +108,10 @@ public class HomeActivity extends AppCompatActivity {
             Intent email = new Intent(Intent.ACTION_SENDTO);
             email.setData(Uri.parse("mailto:")); // Solo apps de correo
             email.putExtra(Intent.EXTRA_EMAIL, new String[]{emailUsuario});
-            email.putExtra(Intent.EXTRA_SUBJECT, "Prueba desde la app");
-            email.putExtra(Intent.EXTRA_TEXT, "Hola, esto es un intento de correo.");
+            email.putExtra(Intent.EXTRA_SUBJECT, "Prueba Android");
+            email.putExtra(Intent.EXTRA_TEXT, "Hola, Profe Ponganos un 7.0 :) .");
             startActivity(Intent.createChooser(email, "Enviar correo con:"));
+
         });
 
         // Evento: Intent implícito → compartir texto
@@ -127,6 +128,15 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Vergara 165, Santiago, Chile"));
                 startActivity(intent);
 
+            }
+        });
+
+        findViewById(R.id.btnLlamar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Abre la app de teléfono con el número listo para llamar
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"));
+                startActivity(intent);
             }
         });
 
