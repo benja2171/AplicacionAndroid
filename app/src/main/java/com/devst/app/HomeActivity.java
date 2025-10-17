@@ -81,6 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         Button btnGoogleMaps = findViewById(R.id.btnGoogleMaps);
         Button btnLlamar = findViewById(R.id.btnLlamar);
         Button btnCamara = findViewById(R.id.btnCamara);
+        Button btnConfig = findViewById(R.id.btnConfig);
 
         // Recibir dato del Login
         emailUsuario = getIntent().getStringExtra("email_usuario");
@@ -109,6 +110,7 @@ public class HomeActivity extends AppCompatActivity {
             email.setData(Uri.parse("mailto:")); // Solo apps de correo
             email.putExtra(Intent.EXTRA_EMAIL, new String[]{emailUsuario});
             email.putExtra(Intent.EXTRA_SUBJECT, "Prueba Android");
+            email.putExtra(Intent.EXTRA_EMAIL,new String[]{"Benja@gmail.com"});
             email.putExtra(Intent.EXTRA_TEXT, "Hola, Profe Ponganos un 7.0 :) .");
             startActivity(Intent.createChooser(email, "Enviar correo con:"));
 
@@ -139,6 +141,17 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        btnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ConfigActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
         //Linterna Inicializamos la camara
@@ -182,6 +195,10 @@ public class HomeActivity extends AppCompatActivity {
         );
 
     }
+
+
+
+
 
     //Linterna
     private void alternarluz() {

@@ -34,6 +34,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- Permisos para acceder a archivos -->
+
+        <activity android:name=".ConfigActivity"
+            android:label="Configuración"
+            android:parentActivityName=".HomeActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
